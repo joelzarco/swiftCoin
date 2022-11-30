@@ -10,7 +10,7 @@ import SwiftUI
 struct TopMoversView: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("Top Movers")
+            Text("Top Mover$")
                 .font(.headline)
             ScrollView(.horizontal){
                 HStack(spacing : 16){
