@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AllCoinsView: View {
+    // in order to receive changes from published
+    @StateObject var viewModel : HomeViewModel
+    
     var body: some View {
         VStack(alignment: .leading){
             Text("All Coin$")
@@ -24,8 +27,8 @@ struct AllCoinsView: View {
             
             ScrollView{
                 VStack{
-                    ForEach(0..<20, id: \.self){ _ in
-                        CoinRowView()
+                    ForEach(viewModel.coins){ coin in
+                        CoinRowView(coin: coin)
                     }
                 }
             } // scroll

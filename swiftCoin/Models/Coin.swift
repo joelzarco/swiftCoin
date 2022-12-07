@@ -8,8 +8,8 @@
 import Foundation
 
 // MARK: - using app.quicktype.io
-
-struct Coin: Codable {
+// must conform to idenfiable protocol
+struct Coin: Codable, Identifiable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
