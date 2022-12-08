@@ -38,14 +38,14 @@ struct CoinRowView: View {
             Spacer()
             // coin price
             VStack(alignment: .trailing, spacing: 4){
-                Text("\(coin.currentPrice)")
+                Text(coin.currentPrice.toCurrency())
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.leading, 4)
-                Text("\(coin.priceChangePercentage24H)")
+                Text(coin.priceChangePercentage24H.toPercentageString())
                     .font(.caption)
                     .padding(.leading, 6)
-                    .foregroundColor(.pink)
+                    .foregroundColor(coin.priceChangePercentage24H > 0 ? .green : .pink)
             }
         } // HS
         .padding(.horizontal)
