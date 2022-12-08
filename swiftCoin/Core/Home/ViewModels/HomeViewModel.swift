@@ -50,6 +50,7 @@ class HomeViewModel : ObservableObject{
     } // fetch
     
     func configureTopMovingCoins(){
+        // array or five most variable coins %
         let topMovers = coins.sorted(by: { $0.priceChangePercentage24H > $1.priceChangePercentage24H})
         self.topMovingCoins = Array(topMovers.prefix(5))
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AllCoinsView: View {
-    // in order to receive changes from published
+    // in order to receive changes from published, already init'd no need do it again
     @StateObject var viewModel : HomeViewModel
     
     var body: some View {
