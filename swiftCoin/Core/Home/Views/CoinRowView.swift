@@ -14,7 +14,7 @@ struct CoinRowView: View {
     var body: some View {
         HStack{
             // market cap rank
-            Text("\(coin.marketCapRank ?? 1)")
+            Text("\(coin.marketCapRank)")
                 .font(.caption)
                 .foregroundColor(.gray)
             // image
