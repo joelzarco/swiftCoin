@@ -34,6 +34,8 @@ struct CoinRowView: View {
                     .font(.caption)
                     .padding(.leading, 6)
             }
+//            .foregroundColor(Color("PrimaryTextColor")) // from color asset to override default blue from navLink
+            .foregroundColor(Color.theme.primaryColor) // the color extension we created
             .padding(.leading, 2)
             Spacer()
             // coin price
@@ -42,6 +44,8 @@ struct CoinRowView: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.leading, 4)
+                    .foregroundColor(Color.theme.primaryColor)
+                
                 Text(coin.priceChangePercentage24H.toPercentageString())
                     .font(.caption)
                     .padding(.leading, 6)
