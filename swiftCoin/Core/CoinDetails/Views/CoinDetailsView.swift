@@ -9,7 +9,20 @@ import SwiftUI
 
 struct CoinDetailsView: View {
     var body: some View {
-        Text("Coin Details View")
+        NavigationView {
+            ScrollView{
+                // chart
+                
+                // overview
+                CoinDetailsSection()
+                    .padding(.vertical)
+                // additional details
+                CoinDetailsSection()
+                    .padding(.vertical)
+            } // scroll
+            .padding()
+            .navigationTitle("Bitcoin")
+        } // nav
     }
 }
 
