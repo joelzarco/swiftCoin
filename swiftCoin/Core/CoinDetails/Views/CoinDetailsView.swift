@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct CoinDetailsView: View {
+    let coin : Coin
+    let viewModel : CoinDetailsViewModel  // class level property
+    
+    init(coin: Coin) {
+        self.coin = coin
+        self.viewModel = CoinDetailsViewModel(coin: coin)
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView{
                 // chart
                 
                 // overview
-                CoinDetailsSection()
+                CoinDetailsSection(model: viewModel.overviewSectionModel)
                     .padding(.vertical)
                 // additional details
-                CoinDetailsSection()
+                CoinDetailsSection(model: viewModel.additionalDetailsSectionModel)
                     .padding(.vertical)
             } // scroll
             .padding()
-            .navigationTitle("Bitcoin")
+            .navigationTitle(coin.name)
         } // nav
     }
 }
