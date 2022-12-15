@@ -16,6 +16,7 @@ struct swiftCoinApp: App {
 //            TopMoversView()
 //            CoinRowView()
 //            CoinDetailsSection()
+//            ChartView()
         }
     }
 }

@@ -36,7 +36,8 @@ class HomeViewModel : ObservableObject{
             
             do{
                 let coins = try JSONDecoder().decode([Coin].self, from: data)
-//                print("DEBUG: Coins\(coins)")
+                print("DEBug: lastUpated: \(coins.first?.lastUpdated)")
+                print("DEBUG: sparkline \(coins.first?.sparklineIn7D)")
                 DispatchQueue.main.async {
                     self.coins = coins
                     self.configureTopMovingCoins()

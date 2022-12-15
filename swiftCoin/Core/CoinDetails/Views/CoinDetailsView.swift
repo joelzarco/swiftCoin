@@ -20,7 +20,9 @@ struct CoinDetailsView: View {
         NavigationView {
             ScrollView{
                 // chart
-                
+                ChartView(viewModel: viewModel)
+                    .frame(height: 250)
+                    .padding(.vertical)
                 // overview
                 CoinDetailsSection(model: viewModel.overviewSectionModel)
                     .padding(.vertical)
@@ -31,7 +33,7 @@ struct CoinDetailsView: View {
             .padding()
             .navigationTitle(coin.name)
         } // nav
-    }
+    } // someV
 }
 
 //struct CoinDetailsView_Previews: PreviewProvider {

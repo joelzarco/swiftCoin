@@ -6,9 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
+import Charts
 
 // MARK: - using app.quicktype.io
 // must conform to idenfiable protocol
+
+struct sparklineIn7D : Codable{
+    let price : [Double]
+}
 struct Coin: Codable, Identifiable {
     let id, symbol, name: String
     let image: String
@@ -25,7 +31,7 @@ struct Coin: Codable, Identifiable {
     let atlDate: String?
     let lastUpdated: String?
     let priceChangePercentage24HInCurrency: Double?
-//    let sparklineIn7D : SparklineIn7D
+    let sparklineIn7D : sparklineIn7D?
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -51,5 +57,6 @@ struct Coin: Codable, Identifiable {
         case atlDate = "atl_date"
         case lastUpdated = "last_updated"
         case priceChangePercentage24HInCurrency = "price_change_percentage_24h_in_currency"
+        case sparklineIn7D = "sparkline_in_7d"
     }
 }
