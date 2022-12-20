@@ -15,4 +15,16 @@ extension Date{
         let date = formatter.date(from: coinGeckoString) ?? Date() // needs a default value
         self.init(timeInterval: 0, since: date)
     }
+    
+    // date formatter for chartView
+    private var shortDateFormatter : DateFormatter{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        return formatter
+    }
+    
+    func asShortDateString()-> String{
+        return shortDateFormatter.string(from: self)
+    }
+    
 }

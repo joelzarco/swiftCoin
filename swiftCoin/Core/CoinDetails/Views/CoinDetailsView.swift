@@ -17,7 +17,6 @@ struct CoinDetailsView: View {
     }
     
     var body: some View {
-        NavigationView {
             ScrollView{
                 // chart
                 ChartView(viewModel: viewModel)
@@ -32,7 +31,6 @@ struct CoinDetailsView: View {
             } // scroll
             .padding()
             .navigationTitle(coin.name)
-        } // nav
     } // someV
 }
 

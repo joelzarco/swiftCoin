@@ -23,13 +23,26 @@ struct ChartView: View {
         } //Chart
         .chartXScale(domain: ClosedRange(uncheckedBounds: (lower: viewModel.startDate, upper: viewModel.endDate)))
         .chartXAxis{
-            AxisMarks(position: .bottom, values: viewModel.xAxisValues)
+            AxisMarks(position: .bottom, values: viewModel.xAxisValues){ value in
+                // formatt dates
+                AxisValueLabel(){
+                    if let dateValue = value.as(Date.self){
+                        Text(dateValue.asShortDateString())
+                    }
+                }
+            }
         }
         .chartYScale(domain: ClosedRange(uncheckedBounds: (lower: viewModel.minPrice, upper: viewModel.maxPrice)))
         .chartYAxis{
-            AxisMarks(position: .leading, values: viewModel.yAxisValues)
-        }
-
+            AxisMarks(position: .leading, values: viewModel.yAxisValues){ value in
+                // format yAxis label with double ext method
+                AxisValueLabel(){
+                    if let doubleValue = value.as(Double.self){
+                        Text(doubleValue.formattedWithAbbreviations())
+                    }
+                } // AxisV
+            } // AxisM
+        } // ChartYA
     } // someV
 }
 

@@ -27,17 +27,21 @@ class CoinDetailsViewModel{
         let priceStats = StatiscticModel(title: "CurrentPrice", value: price, percentageChange: pricePercentageChange)
         
         // market stats
-        let marketCap = coin.marketCap
+        var mc : String = ""
+        if let marketCap = coin.marketCap {
+            mc = marketCap.formattedWithAbbreviations()
+                    }
         let marketCapPercentageChange = coin.marketCapChangePercentage24H
-        let marketCapStat = StatiscticModel(title: "Market Cap", value: "\(marketCap)", percentageChange: marketCapPercentageChange)
-        
+        print("Debug: " + mc + " marketCap")
+        let marketCapStat = StatiscticModel(title: "Market Cap", value: mc, percentageChange: marketCapPercentageChange)
+
         // rank stats
         let rank = coin.marketCapRank
         let rankStat = StatiscticModel(title: "Rank", value: "\(rank)", percentageChange: nil)
         
         // volume stats
-        let volume = coin.totalVolume
-        let volumeStat = StatiscticModel(title: "Volume", value: "\(volume)", percentageChange: nil)
+        let volume = coin.totalVolume ?? 0
+        let volumeStat = StatiscticModel(title: "Volume", value: volume.formattedWithAbbreviations(), percentageChange: nil)
         
         return CoinDetailsSectionModel(title: "Overview", stats: [priceStats, marketCapStat, rankStat, volumeStat])
     }
@@ -56,10 +60,10 @@ class CoinDetailsViewModel{
         let percentageChange24H = coin.priceChangePercentage24H
         let priceChangeStat = StatiscticModel(title: "24H priceChange", value: priceChange24H, percentageChange: percentageChange24H)
         
-        // 24H market cap
-        let marketCapChange = coin.marketCapChange24H?.toCurrency() ?? "n/a"
+        // 24H market cap change
+        let marketCapChange = coin.marketCapChange24H ?? 0
         let marketCapChangePercentage = coin.marketCapChangePercentage24H
-        let marketStat = StatiscticModel(title: "24H Market CapChange", value: "\(marketCapChange)", percentageChange: marketCapChangePercentage)
+        let marketStat = StatiscticModel(title: "24H Market CapChange", value: "$\(marketCapChange.formattedWithAbbreviations())", percentageChange: marketCapChangePercentage)
         
         return CoinDetailsSectionModel(title: "Additional details", stats: [highStat, lowStat, priceChangeStat, marketStat])
     }
