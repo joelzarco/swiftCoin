@@ -29,7 +29,9 @@ struct AllCoinsView: View {
                 VStack{
                     ForEach(viewModel.coins){ coin in
                         NavigationLink {
-                            CoinDetailsView(coin: coin)
+                            // to avoid pre loading details view until tapped
+                            LazyNavigationView(CoinDetailsView(coin: coin))
+//                            CoinDetailsView(coin: coin)
                         } label: {
                             CoinRowView(coin: coin)
                         }

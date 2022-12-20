@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class CoinDetailsViewModel{
     
@@ -19,6 +20,14 @@ class CoinDetailsViewModel{
     var maxPrice = 0.0
     var xAxisValues = [Date]()
     var yAxisValues = [Double]()
+    
+    var coinName : String{
+        return coin.name
+    }
+    var chartLineColor : Color{
+        let priceDelta = (coin.sparklineIn7D?.price.last ?? 0) - (coin.sparklineIn7D?.price.first ?? 0)
+        return (priceDelta > 0) ? .green : .pink
+    }
     
     var overviewSectionModel : CoinDetailsSectionModel{
         // price stats
@@ -71,6 +80,7 @@ class CoinDetailsViewModel{
     init(coin: Coin) {
         self.coin = coin
         configureChartData()
+        print("Debug : coin is \(self.coinName)")
     }
     
     func configureChartData(){

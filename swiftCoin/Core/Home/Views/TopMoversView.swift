@@ -18,7 +18,8 @@ struct TopMoversView: View {
                 HStack(spacing : 16){
                     ForEach(viewModel.topMovingCoins){ coin in
                         NavigationLink {
-                            CoinDetailsView(coin: coin)
+//                            CoinDetailsView(coin: coin)
+                            LazyNavigationView(CoinDetailsView(coin: coin))
                         } label: {
                             TopMoversItemView(coin: coin)
                         }

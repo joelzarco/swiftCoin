@@ -17,11 +17,12 @@ struct CoinDetailsView: View {
     }
     
     var body: some View {
-            ScrollView{
+            ScrollView(showsIndicators: false){ // to hide scrollV side lines
                 // chart
                 ChartView(viewModel: viewModel)
                     .frame(height: 250)
                     .padding(.vertical)
+                    .shadow(color: viewModel.chartLineColor , radius: 10)
                 // overview
                 CoinDetailsSection(model: viewModel.overviewSectionModel)
                     .padding(.vertical)
